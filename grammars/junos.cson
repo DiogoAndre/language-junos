@@ -1,0 +1,43 @@
+'fileTypes': [
+  'jos'
+]
+'foldingStartMarker': '^.*{$'
+'foldingStopMarker': '^.*}$'
+'isDisabled': false
+'name': 'Juniper Junos'
+'patterns': [
+  {
+    'include': '#ip_address'
+  }
+  {
+    'include': '#subnet_mask'
+  }
+  {
+    'include': '#wildcard_mask'
+  }
+]
+'repository':
+  'ip_address':
+    'patterns': [
+      {
+        'match': '\\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(/\\d+)?\\b'
+        'name': 'constant.numeric.junos'
+      }
+    ]
+  'subnet_mask':
+    'patterns': [
+      {
+        'match': '\\s255\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}'
+        'name': 'string.regexp.junos'
+        'comment': 'most common subnet masks'
+      }
+    ]
+  'wildcard_mask':
+    'patterns': [
+      {
+        'match': '\\s0\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}[\/\\d{1,2}]*'
+        'name': 'string.regexp.junos'
+        'comment': 'most common wildcard masks'
+      }
+    ]
+'scopeName': 'source.juniper-junos-config'

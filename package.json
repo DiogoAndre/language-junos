@@ -1,0 +1,10 @@
+{
+  "name": "language-junos",
+  "version": "0.0.0",
+  "description": "Juniper Junos in Atom",
+  "engines": {
+    "atom": "*"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/diogoandre/language-junos"
+}
