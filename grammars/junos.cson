@@ -7,6 +7,9 @@
 'name': 'Juniper Junos'
 'patterns': [
   {
+    'include': '#curly_braces'
+  }
+  {
     'include': '#ip_address'
   }
   {
@@ -14,6 +17,15 @@
   }
   {
     'include': '#wildcard_mask'
+  }
+  {
+    'include': '#interfaces'
+  }
+  {
+    'include': '#numbers'
+  }
+  {
+    'include': '#keys'
   }
 ]
 'repository':
@@ -38,6 +50,54 @@
         'match': '\\s0\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}[\/\\d{1,2}]*'
         'name': 'string.regexp.junos'
         'comment': 'most common wildcard masks'
+      }
+    ]
+  'interfaces':
+    'patterns': [
+      {
+        'begin': '(interfaces)(?:\\s)({)'
+        'beginCaptures':
+          '1':
+            'name': 'constant.language.junos'
+          '2':
+            'name': 'keyword.operator.junos'
+        'end': '(^})'
+        'endCaptures':
+          '1':
+            'name': 'keyword.operator.junos'
+        'patterns': [
+          {
+            'match': '(\\b[a-z]{1,4})([-|\\d])(.*)\\b'
+            'name': 'keyword.other.interface'
+          }
+          {
+            'include' : '#curly_braces'
+          }
+        ]
+      }
+    ]
+  'numbers':
+    'patterns': [
+      {
+        'match': '\\b\\d+(?=[\\s*|;])'
+        'name': 'constant.numeric.junos'
+        'comment': 'generic numbers'
+      }
+    ]
+  'keys':
+    'patterns': [
+      {
+        'match': '^(?:\\s*)\\b\\w*(?=\\s+{)'
+        'name': 'constant.language.junos'
+        'comment': 'key command'
+      }
+    ]
+  'curly_braces':
+    'patterns': [
+      {
+        'match': '[{|}]'
+        'name': 'keyword.operator.junos'
+        'comment': 'curly braces'
       }
     ]
 'scopeName': 'source.juniper-junos-config'
