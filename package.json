@@ -1,6 +1,6 @@
 {
   "name": "language-junos",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Juniper Junos in Atom",
   "engines": {
     "atom": "*"
